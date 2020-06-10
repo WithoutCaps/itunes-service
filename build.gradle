@@ -1,0 +1,18 @@
+group 'io.gytis'
+version '1.0-SNAPSHOT'
+
+allprojects{
+    group 'io.gytis.itunes'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+    }
+
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = "11"
+        targetCompatibility = "11"
+    }
+
+}

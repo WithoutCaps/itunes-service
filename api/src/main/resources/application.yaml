@@ -1,0 +1,16 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  r2dbc:
+    url: mem:testdb;DB_CLOSE_DELAY=-1;TRACE_LEVEL_FILE=4
+    username: sa
+    password:
+    initialization-mode: always
+
+
+
+#  spring.r2dbc.url=r2dbc:postgresql://localhost/test
+#  spring.r2dbc.username=user
+#  spring.r2dbc.password=password
+#  spring.r2dbc.initialization-mode=always
