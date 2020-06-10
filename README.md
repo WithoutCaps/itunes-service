@@ -1,4 +1,3 @@
-
 ## Extras
 - Jar path: `ItunesApi/api/build/libs/api-1.0-SNAPSHOT.jar`
 - Tests report: `ItunesApi/api/build/reports/pitest/index.html`
@@ -8,17 +7,17 @@
 2. `api` - service itself
 ## Caching
 ### Search cache
-If query exists in cache - it uses it, calls API otherwise and caches its results in Redis for 24h.
+If query exists in cache - it uses it, calls API otherwise, and caches its results in Redis for 24h.
 
 ### Top 5 Albums
-If album exists in cache - it uses it, calls API otherwise and caches it in Redis indefinitely. 
-All existing albums in cache are updated every midnight (in bulk, as Single query)
+If album exists in cache - it uses it, calls API otherwise, and caches it in Redis indefinitely. 
+All existing albums in the cache are updated every midnight (in bulk, as Single query)
 
 ## Scaling
-This application efficiently caches ITunes api results which allows our end users to execute more then 100 queries per hour.
+This application efficiently caches iTunes API results which allow our end-users to execute more than 100 queries per hour.
 But 100 queries limitation still exists, here are my proposed workarounds:
 1. Host multiple reverse proxies on different networks (possibly use something along the lines of AWS lambda for that?)
-2. On the internet there are bunch of free proxies, these proxies can be used to route our requests through since we are not sending any sensitive information.
+2. On the internet there are a bunch of free proxies, these proxies can be used to route our requests through since we are not sending any sensitive information.
 
 ## Technologies used
 - Spring Boot
@@ -37,13 +36,12 @@ But 100 queries limitation still exists, here are my proposed workarounds:
 ## Rest endpoints
 #### Users controller
 User model example: ` { "id": 1, "name": "User 1", "favoriteAmgArtistsIds": [ 1, 2, 3 ] }`
-- `GET /api/users`         - Get all users
-- `POST /api/users`        - Create a new user 
-- `GET /api/users/{id}`    - Get specific user   
-- `PUT /api/users/{id}`    - Edit user 
+- `GET /api/users`         - Get all users
+- `POST /api/users`        - Create a new user 
+- `GET /api/users/{id}`    - Get specific user   
+- `PUT /api/users/{id}`    - Edit user 
 - `DELETE /api/users/{id}` - Delete user 
 
 #### Artists controller
 - `GET /api/artists?term={artist_name}` - Search for artists
-- `GET /api/artists/{id}/top`           - Get detailed artist info (Top 5 albums)
-
+- `GET /api/artists/{id}/top`           - Get detailed artist info (Top 5 albums)
